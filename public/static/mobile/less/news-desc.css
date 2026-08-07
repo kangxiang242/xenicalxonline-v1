@@ -38,7 +38,8 @@
   margin-bottom: 2rem;
 }
 .news-show-wrap .middle .fluid .news-content img {
-  width: 100%;
+  width: 100%!important;
+  height: auto!important;
 }
 .news-show-wrap .middle .fluid .news-content span {
   font-family: "Microsoft YaHei" !important;
@@ -122,3 +123,4 @@
 .news-show-wrap .article-footer .relatednav-next:hover .relatednav-title {
   color: #ff9b3e;
 }
+/*# sourceMappingURL=news-desc.css.map */

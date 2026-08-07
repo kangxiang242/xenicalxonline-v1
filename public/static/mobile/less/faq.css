@@ -1,6 +1,7 @@
 .fqa {
   padding: 0 1.5rem;
   margin-top: 3rem;
+  margin-bottom: 6rem;
 }
 .fqa .modal {
   text-align: center;
@@ -23,14 +24,14 @@
   position: relative;
   margin-bottom: 1rem;
   transition-duration: 0.3s;
-  border-bottom: 0.1rem solid #ff9b3e;
+  border-bottom: 0.1rem solid #029f7e;
   cursor: pointer;
 }
 .fqa .fqa-body .question .item .q-title {
   height: 5rem;
   display: flex;
   align-items: center;
-  color: #ff9b3e;
+  color: #3d3d3d;
   font-size: 1.6rem;
   width: 30rem;
   text-indent: -2.8rem;
@@ -40,10 +41,12 @@
   font-size: 1.4rem;
   padding-bottom: 1rem;
   padding-left: 2.9rem;
+  color: #029f7e;
 }
 .fqa .fqa-body .question .item .q-icon {
   position: absolute;
   right: 1.2rem;
   top: 1.7rem;
-  color: #ff9b3e;
+  color: #3d3d3d;
 }
+/*# sourceMappingURL=faq.css.map */

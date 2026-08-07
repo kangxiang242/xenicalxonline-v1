@@ -32,7 +32,7 @@
   font-size: 1.6rem;
 }
 .evaluate-container .evaluate-form .form-group .form-inline .radio-inline input[type=radio]:checked + label {
-  background: #ff9b3e;
+  background: #4ecbb1;
   color: #fff;
 }
 .evaluate-container .evaluate-form .form-group .radio-row {
@@ -47,16 +47,15 @@
 .evaluate-container .evaluate-form .form-group .form-control {
   width: 100%;
   height: 4rem;
-  font-size: 16px;
   border: 0.1rem solid #979797;
   background-color: transparent;
   padding: 0 2.6rem;
 }
 .evaluate-container .evaluate-form .form-group .form-control:focus {
-  border-color: #ff9b3e;
+  border-color: #4ecbb1;
 }
 .evaluate-container .evaluate-form .count-btn a {
-  background: #ff9b3e;
+  background: #4ecbb1;
   color: #fff;
   width: 100%;
   height: 4rem;
@@ -160,7 +159,7 @@
   justify-content: center;
   align-items: center;
   color: #fff;
-  background-color: #ff9b3e;
+  background-color: #4ecbb1;
   font-size: 1.6rem;
 }
 .evaluate-container .editor {
@@ -185,3 +184,4 @@
   list-style: disc;
   margin-bottom: 1.8rem;
 }
+/*# sourceMappingURL=evaluate.css.map */

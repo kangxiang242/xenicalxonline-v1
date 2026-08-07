@@ -38,7 +38,7 @@
   border-radius: 5px;
 }
 .evaluate-form .form-group .form-inline .radio-inline input[type=radio]:checked + label {
-  background: #ff9b3e;
+  background: #4ecbb1;
   color: #fff;
 }
 .evaluate-form .form-group .radio-row {
@@ -53,10 +53,10 @@
   padding: 0 26px;
 }
 .evaluate-form .form-group .form-control:focus {
-  border-color: #ff9b3e;
+  border-color: #4ecbb1;
 }
 .evaluate-form .count-btn a {
-  background: #ff9b3e;
+  background: #4ecbb1;
   color: #fff;
   width: 121px;
   height: 48px;
@@ -84,7 +84,7 @@
   margin-top: 12px;
 }
 .figure .col .result .success {
-  color: #ff9b3e;
+  color: #4ecbb1;
 }
 .figure .col .result .error {
   color: #EA4D4D;
@@ -176,6 +176,7 @@
 }
 .propose .body .wares .goods .go-btn:hover {
   color: #fff;
-  background-color: #ff9b3e;
-  border-color: #ff9b3e;
+  background-color: #4ecbb1;
+  border-color: #4ecbb1;
 }
+/*# sourceMappingURL=evaluate.css.map */

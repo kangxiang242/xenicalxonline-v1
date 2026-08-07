@@ -19,11 +19,12 @@ header.-show:before {
   right: 0;
   z-index: 9999;
   transition-duration: 300ms;
+  display: none;
 }
 .right-online-buy a {
   width: 11.2rem;
   height: 4rem;
-  background: #ff9b3e;
+  background: #049e7e;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 0;
@@ -64,10 +65,16 @@ header .menu i {
 header.-show .menu i {
   color: #000;
 }
+.section {
+  padding: 8rem 0;
+}
 .section .head {
   text-align: center;
-  padding-top: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  color: #049e7e;
+}
+.section .head.bs {
+  color: #fff;
 }
 .section .head .title {
   font-weight: 500;
@@ -77,13 +84,12 @@ header.-show .menu i {
   font-size: 1rem;
 }
 .section.orange-bg {
-  background-color: #FFEBD9;
+  background-color: #4ecbb1;
 }
 .adv-section {
   width: 100%;
   position: relative;
   overflow: hidden;
-  margin-bottom: 4.5rem;
 }
 .adv-section .swiper-container {
   height: 100%;
@@ -99,7 +105,7 @@ header.-show .menu i {
   position: relative;
 }
 .adv-section .act-main .video-wrap {
-  width: 31.5rem;
+  width: 100%;
   height: 62rem;
   position: relative;
   z-index: 2;
@@ -111,8 +117,8 @@ header.-show .menu i {
   width: 100%;
   height: 100%;
   z-index: 3;
-  background-color: #793d04;
-  opacity: 0.2;
+  background-color: #2d4b4b;
+  opacity: 0.7;
 }
 .adv-section .act-main .video-wrap .slide-inner {
   width: 100%;
@@ -120,7 +126,7 @@ header.-show .menu i {
 }
 .adv-section .act-main .video-wrap .video-slogan {
   position: absolute;
-  bottom: 30rem;
+  bottom: 46rem;
   left: 5rem;
   z-index: 4;
   color: #fff;
@@ -131,22 +137,43 @@ header.-show .menu i {
   width: 100%;
 }
 .adv-section .act-main .video-wrap .video-slogan .p1 {
-  font-size: 2rem;
+  font-size: 5rem;
 }
 .adv-section .act-main .video-wrap .video-slogan .p2 {
   font-size: 4.4rem;
   font-style: italic;
+  color: #5affdd;
+  margin-left: -0.4rem;
 }
 .adv-section .act-main .video-wrap .video-slogan .p3 {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+}
+.adv-section .act-main .video-wrap .sl-btn {
+  position: absolute;
+  z-index: 4;
+  color: #fff;
+  font-size: 1.8rem;
+  bottom: 10rem;
+  left: 5rem;
+  border: 0.1rem solid #fff;
+  width: 20rem;
+  height: 6rem;
+  border-radius: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.adv-section .act-main .video-wrap .sl-btn i {
+  font-size: 2rem;
+  margin-left: 1rem;
 }
 .adv-section .act-main .video-wrap .pill1 {
   position: absolute;
   right: 0;
   transform: translate(11.6rem, 16.6rem);
   bottom: 0;
-  z-index: 4;
-  background-image: url("/static/img/pill1.webp");
+  z-index: 3;
+  /*background-image: url("/static/img/pill1.png");*/
   background-repeat: no-repeat;
   width: 23.4rem;
   height: 29.8rem;
@@ -157,8 +184,8 @@ header.-show .menu i {
   right: 0;
   transform: translate(4.6rem, 11.6rem);
   bottom: 0;
-  z-index: 3;
-  background-image: url("/static/img/pill2.webp");
+  z-index: 0;
+  /*background-image: url("/static/img/pill2.png");*/
   background-repeat: no-repeat;
   width: 27.2rem;
   height: 18.8rem;
@@ -169,11 +196,6 @@ header.-show .menu i {
   bottom: 3rem;
   left: 1rem;
   z-index: 9;
-  /* @-webkit-keyframes progress-bar
-                {
-                    0%   {height: 0;}
-                    100% {height: 100%;}
-                } */
 }
 .adv-section .act-main .video-wrap .progress .bar {
   width: 0.2rem;
@@ -207,6 +229,15 @@ header.-show .menu i {
     height: 100%;
   }
 }
+@-webkit-keyframes progress-bar {
+  /* Safari 与 Chrome */
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
 .adv-section .act-main .slogan-wrap {
   width: 40.8rem;
   height: 87rem;
@@ -217,49 +248,54 @@ header.-show .menu i {
   position: absolute;
   z-index: 1;
   right: 0;
-  top: 0;
+  top: 6rem;
 }
 .adv-section .act-main .slogan-wrap .text {
   position: absolute;
   right: 2.2rem;
-  top: 0;
-  padding-top: 6rem;
+  top: 2.2rem;
   font-size: 2.4rem;
   width: 2rem;
   line-height: 1.5;
   opacity: 0;
-  color: #ff9b3e;
+  color: #049e7e;
 }
 .adv-section .act-main .slogan-wrap .back-img img {
   position: absolute;
   width: 52%;
   right: 0;
 }
-.adv-section .about-main {
+.about-main {
   position: relative;
   z-index: 1;
+  background-color: #fff;
+  padding: 8rem 0;
 }
-.adv-section .about-main .head {
+.about-main .head {
+  width: 100%;
   text-align: center;
-  margin-top: 14rem;
+  position: relative;
 }
-.adv-section .about-main .head .title {
-  font-size: 2.6rem;
+.about-main .head .title {
+  font-size: 2.4rem;
   font-weight: 500;
+  padding: 0 1rem;
+  color: #049e7e;
 }
-.adv-section .about-main .head .sub {
+.about-main .head .sub {
   font-size: 1rem;
+  padding-top: 2rem;
 }
-.adv-section .about-main .text {
+.about-main .text {
   padding: 0 2rem;
   margin-top: 3rem;
   font-size: 1.4rem;
   line-height: 2.3rem;
 }
-.adv-section .about-main .cumulative {
+.about-main .cumulative {
   text-align: center;
   margin-top: 2.4rem;
-  background-image: url("/static/img/daoshui.webp");
+  background-image: url("/static/img/daoshui1.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   width: 34rem;
@@ -267,24 +303,70 @@ header.-show .menu i {
   margin-right: auto;
   height: 10rem;
 }
-.adv-section .about-main .cumulative .p1 {
+.about-main .cumulative .p1 {
   font-size: 1.4rem;
 }
-.adv-section .about-main .cumulative .p2 {
+.about-main .cumulative .p2 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.adv-section .about-main .cumulative .p2 .num {
+.about-main .cumulative .p2 .num {
   font-size: 5rem;
 }
-.adv-section .about-main .cumulative .p2 .em {
-  font-size: 1.4rem;
+.about-main .cumulative .p2 .em {
+  font-size: 3.2rem;
   text-align: left;
   margin-left: 0.8rem;
 }
+.about-main svg {
+  opacity: 0;
+}
+.about-main .ts-svg {
+  opacity: 0.6;
+}
+.about-main .ts-svg svg {
+  opacity: 1;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+.about-main .ts-svg svg path {
+  stroke: #fff400;
+  stroke-width: 9;
+  fill: none;
+  opacity: 0;
+  stroke-dasharray: 0 1500;
+  animation: elementor-headline-dash 1.5s forwards;
+  -webkit-animation: elementor-headline-dash 1.5s forwards;
+}
+@-webkit-keyframes elementor-headline-dash {
+  0% {
+    stroke-dasharray: 0 1500;
+    opacity: 1;
+  }
+  to {
+    stroke-dasharray: 1500 1500;
+    opacity: 1;
+  }
+}
+@keyframes elementor-headline-dash {
+  0% {
+    stroke-dasharray: 0 1500;
+    opacity: 1;
+  }
+  to {
+    stroke-dasharray: 1500 1500;
+    opacity: 1;
+  }
+}
 .suit-section {
-  background-color: #FFEBD9;
+  background-color: #4ecbb1;
+  padding: 8rem 0;
 }
 .suit-section .main {
   display: flex;
@@ -304,9 +386,11 @@ header.-show .menu i {
 .suit-section .main .item .box img {
   width: 100%;
   border-radius: 50%;
+  border: 0.2rem solid #049e7e;
 }
 .suit-section .main .item .text {
   font-size: 1.4rem;
+  color: #fff;
 }
 .affect-section {
   /*.decorate{
@@ -343,15 +427,15 @@ header.-show .menu i {
   margin: 0 auto;
 }
 .affect-section .main .picker.key-1 {
-  background-image: url(/static/img/how-1.webp);
+  background-image: url(/static/img/how-1.jpg);
   height: 20rem;
 }
 .affect-section .main .picker.key-2 {
-  background-image: url(/static/img/how-2.webp);
+  background-image: url(/static/img/how-2.jpg);
   height: 23rem;
 }
 .affect-section .main .picker .min-fat {
-  background-image: url(/static/img/zf-3.webp);
+  background-image: url(/static/img/zf-3.png);
   background-size: cover;
   background-repeat: no-repeat;
   width: 0.8rem;
@@ -360,7 +444,7 @@ header.-show .menu i {
   position: absolute;
 }
 .affect-section .main .picker .max-fat {
-  background-image: url(/static/img/zf-1.webp);
+  background-image: url(/static/img/zf-1.png);
   background-size: cover;
   background-repeat: no-repeat;
   width: 4.5rem;
@@ -445,12 +529,13 @@ header.-show .menu i {
 }
 .affect-section .main .introduce {
   width: 33.5rem;
-  background: #FFEBD9;
+  background: #4ecbb1;
   border-radius: 0rem 5rem 5rem 5rem;
   margin: 0 auto;
   padding: 2.3rem;
   font-size: 1.4rem;
   line-height: 2.3rem;
+  color: #fff;
 }
 .affect-section .main .introduce.int-2 {
   border-radius: 5rem 0rem 5rem 5rem;
@@ -485,13 +570,13 @@ header.-show .menu i {
   width: 8.6rem;
   height: 8.6rem;
   background: #FFFFFF;
-  border: 0.2rem solid #ff9b3e;
+  border: 0.2rem solid #049e7e;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 5rem;
-  color: #ff9b3e;
+  color: #049e7e;
   position: absolute;
   right: 0;
   top: 0;
@@ -541,20 +626,20 @@ header.-show .menu i {
 }
 .buy-section .main .product .goods .price .now {
   font-size: 1.6rem;
-  color: #ff9b3e;
+  color: #ff4e4e;
 }
 .buy-section .main .product .goods .price .jetso {
   font-size: 1.2rem;
-  color: #ff9b3e;
+  color: #049e7e;
   padding: 0.3rem 0.7rem;
-  border: 0.1rem solid #ff9b3e;
+  border: 0.1rem solid #049e7e;
   border-radius: 0.3rem;
   margin-left: 0.4rem;
 }
 .buy-section .main .product .goods .checkout-btn {
   width: 10rem;
   height: 3rem;
-  background: #ff9b3e;
+  background: #049e7e;
   border-radius: 2rem;
   display: flex;
   justify-content: center;
@@ -578,9 +663,6 @@ header.-show .menu i {
 .word-section .main .word-item .box img {
   width: 100%;
 }
-.eval-section {
-  padding-bottom: 2.7rem;
-}
 .eval-section .main {
   padding: 0 4rem;
 }
@@ -589,13 +671,14 @@ header.-show .menu i {
   line-height: 2.3rem;
   margin-bottom: 2.1rem;
   text-align: center;
+  color: #fff;
 }
 .eval-section .main .btn {
   width: 20rem;
   height: 4rem;
-  background: #ff9b3e;
+  background: #fff;
   border-radius: 2rem;
-  color: #fff;
+  color: #049e7e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -604,6 +687,7 @@ header.-show .menu i {
 }
 .solve-section {
   margin-bottom: 2rem;
+  padding: 0;
 }
 .solve-section .main {
   overflow-x: hidden;
@@ -655,20 +739,17 @@ header.-show .menu i {
   font-size: 2.4rem;
   margin-left: 0.3rem;
 }
-.faq-section {
-  padding-bottom: 4rem;
-}
 .faq-section .question {
   padding: 0 1.5rem;
 }
 .faq-section .question .item {
   margin-bottom: 1.5rem;
-  border-bottom: 0.1rem solid #ff9b3e;
+  border-bottom: 0.1rem solid #029f7e;
   position: relative;
 }
 .faq-section .question .item .q-title {
   font-size: 1.6rem;
-  color: #ff9b3e;
+  color: #3d3d3d;
   padding-right: 3rem;
   text-indent: -3rem;
   margin-left: 3rem;
@@ -685,6 +766,7 @@ header.-show .menu i {
   transition: all 0.2s ease-in;
   overflow: hidden;
   font-size: 1.3rem;
+  color: #029f7e;
 }
 .faq-section .question .item .q-desc.-show {
   opacity: 1;
@@ -695,7 +777,7 @@ header.-show .menu i {
   position: absolute;
   right: 0;
   top: 0;
-  color: #ff9b3e;
+  color: #3d3d3d;
 }
 .faq-section .question .item .shrink i {
   font-size: 1.6rem;
@@ -726,7 +808,7 @@ header.-show .menu i {
   letter-spacing: 1rem;
   width: 9rem;
   overflow: hidden;
-  color: #ff9b3e;
+  color: #049e7e;
 }
 .epilogue-section .main .text p {
   opacity: 0;
@@ -735,3 +817,4 @@ header.-show .menu i {
   margin-top: 4rem;
   margin-right: 2rem;
 }
+/*# sourceMappingURL=index.css.map */

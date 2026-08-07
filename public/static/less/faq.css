@@ -30,23 +30,25 @@ footer {
   position: relative;
   margin-bottom: 10px;
   transition-duration: 0.3s;
-  border-bottom: 1px solid #ff9b3e;
+  border-bottom: 1px solid #029f7e;
   cursor: pointer;
 }
 .fqa .fqa-body .question .item .q-title {
   height: 50px;
   line-height: 50px;
-  color: #ff9b3e;
+  color: #3d3d3d;
   font-size: 18px;
 }
 .fqa .fqa-body .question .item .q-desc {
   font-size: 14px;
   padding-bottom: 10px;
   padding-left: 25px;
+  color: #029f7e;
 }
 .fqa .fqa-body .question .item .q-icon {
   position: absolute;
   right: 12px;
   top: 12px;
-  color: #ff9b3e;
+  color: #3d3d3d;
 }
+/*# sourceMappingURL=faq.css.map */

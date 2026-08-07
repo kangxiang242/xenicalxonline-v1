@@ -147,7 +147,7 @@
   height: 4rem;
   background-color: #fff;
   border: 0.1rem solid #979797;
-  font-size: 16px;
+  font-size: 1.4rem;
   padding: 0 1.5rem;
   font-family: Microsoft YaHei;
 }
@@ -172,7 +172,7 @@
   margin-top: 1rem;
 }
 .message-container .page-main .form-pack .form-group .form-btn.activate-btn {
-  background: #ff9b3e;
+  background: #4ecbb1;
 }
 .message-container .foot {
   margin-top: 4.3rem;
@@ -182,3 +182,4 @@
 .message-container .foot .li {
   margin-bottom: 2rem;
 }
+/*# sourceMappingURL=message.css.map */
