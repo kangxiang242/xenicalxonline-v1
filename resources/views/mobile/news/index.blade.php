@@ -56,7 +56,7 @@
         <p class="slogan">{!! app('cache.config')->get('page_news_title') !!}</p>
     </div>
 
-    <div class="news-wrap" data-track-section="news.list" data-track-section-view data-track-section-label="文章列表">
+    <div class="news-wrap">
         <div class="page-head">
             <p class="beat"><i class="iconfont">&#xe784;</i></p>
             <h1 class="page-title">瘦身專欄</h1>
@@ -66,9 +66,7 @@
             @foreach($news as $item)
                 <li class="">
                     <div class="item ">
-                        @if($item->img)
-                        <div class="Img"><a href="{{ url('news/'.$item->id) }}" data-track-section="news.list" data-track-name="news.list.item" data-observer="文章-{{ $item->title }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->title }}" loading="lazy" decoding="async"></a></div>
-                        @endif
+                        <div class="Img"><a href="{{ url('news/'.$item->id) }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->title }}"></a></div>
                         <div class="Txt">
                             <div class="newsInfoIdxBox">
                                 <div class="newsDateBox">
@@ -76,7 +74,7 @@
                                     <span class="ym">{{ substr($item->release_at->format('Y'),-2) }} {{ $item->release_at->format('M') }}</span>
                                 </div>
                                 <div class="newsTitle">
-                                    <h3><a href="{{ url('news/'.$item->id) }}" data-track-section="news.list" data-track-name="news.list.title" data-observer="文章標題-{{ $item->title }}">{{ $item->title }}</a></h3>
+                                    <h3><a href="{{ url('news/'.$item->id) }}">{{ $item->title }}</a></h3>
                                 </div>
                             </div>
                             <p class="ellipsis" style="overflow-wrap: break-word;">

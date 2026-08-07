@@ -9,6 +9,7 @@
 
 @section('script')
     @parent
+    <script src="{{ asset('static/a/js/jquery.easing.1.3.js') }}?ver={{ config('app.asset_version') }}"></script>
     <script src="{{ asset('static/a/js/jquery.parallax-scroll.js') }}?ver={{ config('app.asset_version') }}"></script>
 
 @stop
@@ -26,7 +27,7 @@
 @stop
 @section('content')
 
-<section class="product-container" data-track-section="product_list" data-track-section-view data-track-section-label="商品列表">
+<section class="product-container">
     <div class="wrapper">
 
         <div class="product-main">
@@ -35,15 +36,12 @@
 
                 <div class="goods wow animate__animated animate__fadeInUp {{ $key%2==0?"even":"odd" }}">
                     <div class="img-wrap" data-parallax='{"y": {{ $key%2==0?"-":"" }}100,"duration": 100}'>
-                        <img src="{{ asset('uploads/'.$goods->img) }}?ver={{ config('app.asset_version') }}" alt="{{ $goods->name }}" loading="lazy" decoding="async">
+                        <img  src="{{ asset('uploads/'.$goods->img) }}" alt="{{ $goods->name }}">
                     </div>
                     <div class="info" data-parallax='{"y": {{ $key%2==0?"":"-" }}100}'>
                         <div class="info-boa">
                             <p class="line"></p>
-                            <div class="title">
-                                <h2>{{ $goods->name }}</h2>
-                                <p>{{ $goods->quantity }}{{ $goods->quantity == 1?"盒標準裝":"盒優惠套裝" }}</p>
-                            </div>
+                            <p class="title">{{ $goods->name }}</p>
                             <div class="tags">
                                 @if($goods->label)
                                     <p class="tags">
@@ -64,17 +62,16 @@
                                 </div>
                             @endif
                             <div class="price">
-                                <span class="now">${{ round($goods->price) }}</span>
+                                <span class="now">NT$ {{ number_format(round($goods->price)) }}</span>
                                 @if($goods->market_price-$goods->price > 0)
-                                    <span class="discount deline">${{ $goods->market_price }}</span>
+                                    <span class="discount">為你優惠NT${{ number_format(round($goods->market_price-$goods->price)) }}</span>
                                 @else
-                                    <span class="discount">官方標準售價</span>
+                                    <span class="discount">藥局統一售價</span>
                                 @endif
                             </div>
 
-                            <div class="btn">
-                                <a class="checkout" data-track-section="product_list" data-track-name="product.list.checkout" href="{{ url('checkout/'.$goods->id) }}" data-observer="立即訂購-{{ $goods->name }}">立即訂購</a>
-                                <a class="goinfo" data-track-section="product_list" data-track-name="product.list.detail" href="{{ url('product/'.$goods->id) }}" data-observer="詳情-{{ $goods->name }}">更多詳情</a>
+                            <div class="checkout">
+                                <a class="btn-ef1" href="{{ url('checkout/'.$goods->id) }}">立即購買</a>
                             </div>
                         </div>
                     </div>

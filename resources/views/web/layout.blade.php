@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-@php
-    $needsSwiper = request()->is('/');
-    $needsWow = request()->is('/') || request()->is('product');
-@endphp
 <html lang="zh-TW">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
     <meta http-equiv="content-language" content="zh-tw">
     <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @if(isset($layout['seo']))
     <title>{{ isset($layout['seo'])?$layout['seo']->title:"" }}</title>
     @else
@@ -31,56 +27,25 @@
     @else
     <meta name="description" content="{{ isset($layout['seo'])?$layout['seo']->description:"" }}"/>
     @endif
-    <link rel="alternate" hreflang="zh-TW" href="{{ url()->current() }}" />
-    <link rel="canonical" href="{{ url()->current() }}">
-    @if(config('app.m_url'))
-        <link rel="alternate" media="only screen and (max-width: 640px)" href="{{ config('app.m_url') }}/{{ trim(request()->path(),'/') }}">
-    @endif
+    <link rel="canonical" href="{{ config('app.url') }}/{{ trim(request()->path(),'/') }}">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="{{ env('APP_M_URL') }}/{{ trim(request()->path(),'/') }}">
     <link rel="shortcut icon" href="{{ \App\Services\ConfigService::get('favicon')?asset('uploads/'.\App\Services\ConfigService::get('favicon')):'/favicon.ico' }}">
-
-    {{-- Open Graph --}}
-    <meta property="og:site_name" content="{{ config('app.name') }}" />
-    <meta property="og:title" content="@yield('og_title', $layout['seo']->title ?? '')" />
-    <meta property="og:description" content="@yield('og_description', $layout['seo']->description ?? '')" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:type" content="@yield('og_type', 'website')" />
-    <meta property="og:locale" content="zh_TW" />
-    @section('og_image')
-    @show
-    @if(!empty($layout['seo']->img))
-    <meta property="og:image" content="{{ asset('uploads/' . $layout['seo']->img) }}" />
-    @endif
-
-    {{-- JSON-LD Structured Data --}}
-    <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "{{ config('app.name') }}",
-        "url": "{{ url('/') }}",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ url('/') }}/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-    @yield('jsonld')
     @section('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('static/css/style.css') }}?ver={{ config('app.asset_version') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('static/css/common.css') }}?ver={{ config('app.asset_version') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('static/less/global.css') }}?ver={{ config('app.asset_version') }}"/>
-        @if(!is_googlebot())
-        <link rel="stylesheet" href="{{ asset('static/font/iconfont.css') }}?ver={{ config('app.asset_version') }}">
-        @endif
-        @if($needsSwiper)
+        <link rel="stylesheet" href="{{ asset('static/font_3122894_o33hqrxtwf/iconfont.css') }}?ver={{ config('app.asset_version') }}">
         <link rel="stylesheet" href="{{ asset('static/swiper4/swiper.min.css') }}?ver={{ config('app.asset_version') }}">
-        @endif
-        @if($needsWow)
+        <link rel="stylesheet" href="{{ asset('static/less/section.css') }}?ver={{ config('app.asset_version') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('static/wow/animate.min.css') }}?ver={{ config('app.asset_version') }}"/>
-        @endif
     @show
-
+    <style>
+        :root{
+            --main-color: #00c49c;
+            --bump-color: #ccf3eb;
+            --deep-color: #20b495;
+        }
+    </style>
     <style>html{--color-red:red}body.-ajax .o-loading__ajax{opacity:.5}body.-loading #wrapper,body:not(.-ajax) .o-loading__ajax{opacity:0}body.-loading .o-loading__content{opacity:1}body.-loading.page-index .o-loading__box.-start:before{-webkit-animation:marginLeftIn .5s .5s forwards;animation:marginLeftIn .5s .5s forwards}body.-loading.page-index .o-loading__box.-main:before{-webkit-animation:marginRightIn .5s 1s forwards;animation:marginRightIn .5s 1s forwards}body.-loading.page-index .o-loading__box.-cover:before{-webkit-animation:marginRightIn .5s 1.5s forwards;animation:marginRightIn .5s 1.5s forwards}body:not(.-loading) .o-loading__content:before{margin-left:0}body:not(.-loading).page-index .o-loading__box.-cover:before{margin-right:100vw}.o-loading{width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:100000;pointer-events:none}.page-index .o-loading__box.-start{opacity:1;visibility:visible}.page-index .o-loading__box.-start:before{margin-left:0}.page-index .o-loading__box.-main:before{margin-right:0}.page-index .o-loading__box.-cover{opacity:1;visibility:visible}.page-index .o-loading__box.-cover:before{margin-right:0}.o-loading__ajax{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background:#fff;opacity:.5;-webkit-transition:opacity .3s;transition:opacity .3s}.o-loading__ajax span{width:80px;height:80px;border-radius:50%;border-left:3px solid #ec7021;-webkit-animation:rotate 2s linear infinite;animation:rotate 2s linear infinite}@-webkit-keyframes rotate{to{-webkit-transform:rotate(0);transform:rotate(0)}0%{-webkit-transform:rotate(-1turn);transform:rotate(-1turn)}}@keyframes rotate{to{-webkit-transform:rotate(0);transform:rotate(0)}0%{-webkit-transform:rotate(-1turn);transform:rotate(-1turn)}}.o-loading__content{width:auto;height:100%;position:absolute;top:0;right:0;display:block;overflow:hidden;background:#fff;opacity:0;-webkit-transition:opacity .6s ease 1s;transition:opacity .6s ease 1s}.o-loading__content:before{width:auto;height:100%;content:"";position:relative;display:block;margin-left:100vw;-webkit-transition:margin-left .5s cubic-bezier(.9,0,.1,1) 0s;transition:margin-left .5s cubic-bezier(.9,0,.1,1) 0s}.o-loading__content-frame{width:100vw;height:100%;position:absolute;top:0;right:0;display:block;z-index:1}.o-loading__content-frame-bg{width:100%;height:100%;position:relative;z-index:5}.o-loading__box{width:auto;height:100%;position:absolute;top:0;left:0;display:block;overflow:hidden}.o-loading__box.-start{right:0;left:auto;opacity:0;visibility:hidden}.o-loading__box.-start:before{margin-left:0}.o-loading__box.-main:before{margin-right:100vw}.o-loading__box.-cover{opacity:0;visibility:hidden}.o-loading__box:before{width:auto;height:100%;content:"";position:relative;display:block}.o-loading__logo{width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:20px}.o-loading__logo svg{display:block;max-width:100%;max-height:100%}@media (max-width:767px){.o-loading__logo svg{width:176px;height:auto}}.o-loading__cover,.o-loading__main,.o-loading__start{width:100vw;height:100%;position:absolute;top:0;left:0;display:block}.o-loading__cover:before,.o-loading__main:before,.o-loading__start:before{width:100%;height:100%;content:"";position:absolute;top:0;left:0;display:block;background-color:#ff893d;z-index:-1}.o-loading__main:before{background-color:#fff}@-webkit-keyframes marginLeftIn{0%{margin-left:0}to{margin-left:100vw}}@keyframes marginLeftIn{0%{margin-left:0}to{margin-left:100vw}}@-webkit-keyframes marginLeftOut{0%{margin-left:100vw}to{margin-left:0}}@keyframes marginLeftOut{0%{margin-left:100vw}to{margin-left:0}}@-webkit-keyframes marginRightIn{0%{margin-right:0}to{margin-right:100vw}}@keyframes marginRightIn{0%{margin-right:0}to{margin-right:100vw}}@-webkit-keyframes marginRightOut{0%{margin-right:100vw}to{margin-right:0}}@keyframes marginRightOut{0%{margin-right:100vw}to{margin-right:0}}</style>
     <style>
 
@@ -124,33 +89,14 @@
             }
         }
     </style>
-    @php
-        $trackingWebHost = parse_url(config('app.url'), PHP_URL_HOST);
-        $trackingMobileHost = parse_url(config('app.m_url') ?: config('app.url'), PHP_URL_HOST);
-    @endphp
     <script src="{{ asset('static/js/jquery.min.js') }}?ver={{ config('app.asset_version') }}"></script>
-    <script>
-        window.__TRACKING_CONFIG__ = {
-            webHost: @json($trackingWebHost),
-            mobileHost: @json($trackingMobileHost),
-            endpoint: '/observer/store',
-            enabled: @json(!app()->environment('local')),
-            debug: @json(app()->environment('local')),
-            assetVersion: @json(config('app.asset_version')),
-            pluginBase: @json(asset('static/js/tracker-plugins') . '/')
-        };
-    </script>
-    @include('components.tracking-page')
-    <script src="{{ asset('static/js/tracker.js') }}?ver={{ config('app.asset_version') }}" defer></script>
-    <script src="{{ asset('static/js/observer.js') }}?ver={{ config('app.asset_version') }}" defer></script>
-    @if($needsWow)
     <script src="{{ asset('static/wow/wow.min.js') }}?ver={{ config('app.asset_version') }}"></script>
+    <script src="{{ asset('static/jquery_lazyload/jquery.lazyload.min.js') }}?ver={{ config('app.asset_version') }}"></script>
     <script>
         new WOW({
             offset:150,
         }).init();
     </script>
-    @endif
 
     <script>
         var is_ajax_get_cart = 0;
@@ -169,19 +115,8 @@
         var free_shipping_freight = parseInt("{{ \App\Services\ConfigService::get('freight',0) }}");
 
     </script>
-    <!-- Hotjar Tracking Code for https://www.xenicalofficial.com -->
-    <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:3344599,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
 </head>
-<body class=" {{ request()->is('/')?"page-index":"" }} ">
+<body class=" {{ request()->is('/')?"page-index -loading":"" }} ">
 {{--<div class="o-loading">
     <div class="o-loading__content">
         <div class="o-loading__content-frame">
@@ -204,7 +139,7 @@
                 </div>
             </div>
         </div>
-        <img class="o-three-line__static" src="https://www.trustme.com.tw/wp-content/themes/project-theme/src/img/public/stroke-bg.svg" loading="lazy" decoding="async">
+        <img class="o-three-line__static" src="https://www.trustme.com.tw/wp-content/themes/project-theme/src/img/public/stroke-bg.svg">
     </div>
 
 </div>--}}
@@ -217,12 +152,12 @@
                 <div class="logo-wrap hover-logo">
                     <div class="place">
                         <div class="compose">
-                            <img class="fra-1" src="{{ asset('static/img/lg/fra-1.png') }}" alt="logo" decoding="async">
-                            <img class="fra-2" src="{{ asset('static/img/lg/fra-2.png') }}" alt="logo" decoding="async">
-                            <img class="fra-3"  src="{{ asset('static/img/lg/fra-3.png') }}" alt="logo" decoding="async">
+                            <img class="fra-1" src="{{ asset('static/img/lg/fra-1.png') }}" alt="logo">
+                            <img class="fra-2" src="{{ asset('static/img/lg/fra-2.png') }}" alt="logo">
+                            <img class="fra-3"  src="{{ asset('static/img/lg/fra-3.png') }}" alt="logo">
                         </div>
                         <div class="intact">
-                            <img class="xenical-logo" src="{{ asset('static/img/lg/xenical-1.png') }}" alt="xenical" decoding="async">
+                            <img class="xenical-logo" src="{{ asset('static/img/lg/xenical-1.png') }}" alt="xenical">
                             <p class="text">全球領先健康減肥藥</p>
                         </div>
 
@@ -232,14 +167,15 @@
         </div>
         <div class="nav-sec">
             <ul class="base">
-                <li><a href="{{ url('/') }}" data-track-section="nav.top" data-track-name="nav.top.home" data-observer="頂部-首頁">首頁</a></li>
-                <li><a href="{{ url('about') }}" data-track-section="nav.top" data-track-name="nav.top.about" data-observer="頂部-認識羅氏鮮">認識羅氏鮮</a></li>
-                <li><a href="{{ url('faq') }}" data-track-section="nav.top" data-track-name="nav.top.faq" data-observer="頂部-營養師解答">營養師解答</a></li>
-                <li><a href="{{ url('news') }}" data-track-section="nav.top" data-track-name="nav.top.news" data-observer="頂部-瘦身專欄">瘦身專欄</a></li>
+                <li><a href="{{ url('/') }}">首頁</a></li>
+                <li><a href="{{ url('about') }}">瞭解羅氏鮮</a></li>
+                <li><a href="{{ url('faq') }}">減肥FAQ</a></li>
+                <li><a href="{{ url('news') }}">瘦身閱讀</a></li>
+{{--                <li><a href="{{ url('guide') }}">購前須知</a></li>--}}
             </ul>
             <div class="aks">
-                <a class="btn slim-btn btn-ef2" href="{{ url('compute') }}" data-track-section="header" data-track-name="header.compute_btn" data-observer="頂部-瘦身計算機">瘦身計算機</a>
-                <a class="btn shop-btn btn-ef1" href="{{ url('product') }}" data-track-section="header" data-track-name="header.order_btn" data-observer="頂部-線上訂購">線上訂購</a>
+                <a class="btn slim-btn btn-ef2" href="{{ url('compute') }}">瘦身計算機</a>
+                <a class="btn shop-btn btn-ef1" href="{{ url('product') }}">線上訂購</a>
             </div>
         </div>
     </div>
@@ -253,7 +189,7 @@
                     @foreach($layout['banners'] as $item)
                         @if($item->img)
                             <div class="swiper-slide">
-                                <a href="{{ $item->href?url($item->href):"javascript:;" }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->alt }}" loading="lazy" decoding="async"></a>
+                                <a href="{{ $item->href?url($item->href):"javascript:;" }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->alt }}"></a>
                             </div>
                         @endif
                     @endforeach
@@ -268,9 +204,9 @@
 
 @show
 
-<main>
-    @yield('content')
-</main>
+
+@yield('content')
+
 <footer>
     <div class="wrapper">
 
@@ -279,36 +215,33 @@
                 <div class="menu">
                     <p class="title">Sale</p>
                     <ul class="nav">
-                        <li><a href="{{ url('product') }}" data-track-section="footer.sale" data-track-name="footer.sale.order" data-observer="底部-線上訂購">羅氏鮮線上訂購</a></li>
-                        <li><a href="{{ url('guide') }}" data-track-section="footer.sale" data-track-name="footer.sale.guide" data-observer="底部-購前須知">購前須知</a></li>
-                        <li><a href="{{ url('payment-delivery') }}" data-track-section="footer.sale" data-track-name="footer.sale.payment" data-observer="底部-付款與配送">付款與配送</a></li>
-                        <li><a href="{{ url('after-sales') }}" data-track-section="footer.sale" data-track-name="footer.sale.after_sales" data-observer="底部-售後服務">售後服務</a></li>
-
+                        <li><a href="{{ url('product') }}">羅氏鮮線上購買</a></li>
+                        <li><a href="{{ url('guide') }}">購買流程說明</a></li>
                     </ul>
                 </div>
                 <div class="menu">
                     <p class="title">About</p>
                     <ul class="nav">
-                        <li><a href="{{ url('about') }}" data-track-section="footer.about" data-track-name="footer.about.link" data-observer="底部-認識羅氏鮮">認識羅氏鮮</a></li>
+                        <li><a href="{{ url('about') }}">瞭解羅氏鮮</a></li>
                     </ul>
                 </div>
                 <div class="menu">
                     <p class="title">Q&A</p>
                     <ul class="nav">
-                        <li><a href="{{ url('faq') }}" data-track-section="footer.qa" data-track-name="footer.qa.faq" data-observer="底部-營養師解答">營養師解答</a></li>
+                        <li><a href="{{ url('faq') }}">減肥FAQ</a></li>
                     </ul>
                 </div>
                 <div class="menu">
                     <p class="title">Articles</p>
                     <ul class="nav">
-                        <li><a href="{{ url('news') }}" data-track-section="footer.articles" data-track-name="footer.articles.news" data-observer="底部-瘦身專欄">瘦身專欄</a></li>
+                        <li><a href="{{ url('news') }}">減肥專欄</a></li>
                     </ul>
                 </div>
                 <div class="menu">
                     <p class="title">Service</p>
                     <ul class="nav">
-                        <li><a href="{{ url('check') }}" data-track-section="footer.service" data-track-name="footer.service.check" data-observer="底部-訂單追蹤">訂單追蹤</a></li>
-                        <li><a href="{{ url('message') }}" data-track-section="footer.service" data-track-name="footer.service.message" data-observer="底部-取得協助">取得協助</a></li>
+                        <li><a href="{{ url('check') }}">訂單追蹤</a></li>
+                        <li><a href="{{ url('message') }}">取得協助</a></li>
                     </ul>
                 </div>
             </div>
@@ -316,12 +249,12 @@
             <div class="contact-column">
                 <div class="topic">
                     <div class="item">
-                        <a href="{{ url('product') }}" data-track-section="footer.contact" data-track-name="footer.contact.order" data-observer="底部-線上訂購">
+                        <a href="{{ url('product') }}">
                             <div class="col">
                                 <div class="icon"><i class="iconfont">&#xe64f;</i></div>
                                 <div class="text">
                                     <p class="en">Buy Online</p>
-                                    <p class="cn"><span>線上訂購</span></p>
+                                    <p class="cn"><span>網路訂購</span></p>
                                 </div>
                                 <div class="arrow-right"><i class="iconfont">&#xe613;</i></div>
                             </div>
@@ -337,13 +270,14 @@
 
         <div class="description">
             <div class="partner">
-                <div class="icon"><img style="width: 126px" src="{{ asset('static/img/fdausa.webp') }}" alt="fda-usa" loading="lazy" decoding="async"></div>
-                <div class="icon"><img style="width: 152px" src="{{ asset('static/img/ema.webp') }}" alt="ema" loading="lazy" decoding="async"></div>
-
-                <div class="icon"><img style="width: 60px" src="{{ asset('static/img/ROCHE.webp') }}" alt="ROCHE" loading="lazy" decoding="async"></div>
-                <div class="icon"><img style="width: 140px" src="{{ asset('static/img/CHEPLA.webp') }}" alt="CHEPLA" loading="lazy" decoding="async"></div>
-
-                <div class="icon"><img style="width: 52px" src="{{ asset('static/img/ssl.webp') }}" alt="ssl" loading="lazy" decoding="async"></div>
+                <div class="icon"><img style="width: 126px" src="{{ asset('static/img/fdausa.png') }}" alt="fda-usa"></div>
+                <div class="icon"><img style="width: 152px" src="{{ asset('static/img/ema.png') }}" alt="ema"></div>
+                <div class="icon"><img style="width: 145px" src="{{ asset('static/img/fdataiwan.png') }}" alt="台湾fda"></div>
+                <div class="icon"><img style="width: 60px" src="{{ asset('static/img/ROCHE.png') }}" alt="ROCHE"></div>
+                <div class="icon"><img style="width: 140px" src="{{ asset('static/img/CHEPLA.png') }}" alt="CHEPLA"></div>
+                <div class="icon"><img style="width: 26px" src="{{ asset('static/img/7-11.png') }}" alt="7-11"></div>
+                <div class="icon"><img style="width: 122px" src="{{ asset('static/img/heimao.png') }}" alt="黑猫宅急便"></div>
+                <div class="icon"><img style="width: 52px" src="{{ asset('static/img/ssl.png') }}" alt="ssl"></div>
             </div>
             <p class="copyright">{!! app('cache.config')->get('copyright') !!}</p>
         </div>
@@ -351,8 +285,8 @@
 
 
     </div>
-    <div class="back-top" id="back-top" data-track-section="footer" data-track-name="footer.back_top" data-observer="回到頂部">
-        <a href="javascript:;">
+    <div class="back-top" id="back-top">
+        <a>
             <div class="line" ></div>
             <div class="icon"></div>
             <div class="text ">T<br>O<br>P</div>
@@ -364,18 +298,31 @@
 </body>
 
 @section('script')
+<script src="{{ asset('static/js/less.min.js') }}?ver={{ config('app.asset_version') }}"></script>
 
-@if($needsSwiper)
 <script src="{{ asset('static/swiper4/swiper.min.js') }}?ver={{ config('app.asset_version') }}"></script>
-@endif
+<script src="{{ asset('static/js/jquery.cookie.js') }}?ver={{ config('app.asset_version') }}"></script>
+<script src="{{ asset('static/js/cart.js') }}?ver={{ config('app.asset_version') }}"></script>
+<script src="{{ asset('static/js/xie.js') }}?ver={{ config('app.asset_version') }}"></script>
 {!! \App\Services\ConfigService::get('google_ga') !!}
 @show
-<script>// Loading removed - body starts without -loading class
+<script>
+    $(function(){
+        setTimeout(function(){
+            $('body').removeClass('-loading');
+        },2000);
+
+    })
 </script>
 <script>
     $('#back-top').click(function (event) {
         event.preventDefault();
         $('html, body').animate({ scrollTop: 0 }, 500);
     })
+</script>
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn",placeholder:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAASSURBVBhXY/g/2+4/CEMZdv8BZwgLXT+0H34AAAAASUVORK5CYII='});
+    });
 </script>
 </html>

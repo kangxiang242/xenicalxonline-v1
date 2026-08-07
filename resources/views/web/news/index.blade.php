@@ -44,17 +44,12 @@
 
 
 @section('content')
-    @php($newsBg = app('cache.config')->get('page_news_back_img_pc'))
-    @if($newsBg)
-    <div class="container-bg" style="background-image: url('{{ asset_upload($newsBg) }}')">
-    @else
-    <div class="container-bg">
-    @endif
+    <div class="container-bg" style="background-image: url('{{ asset_upload(app('cache.config')->get('page_news_back_img_pc')) }}')">
         <p class="bg-text">{!! app('cache.config')->get('page_news_title') !!}</p>
         <p class="beat"><i class="iconfont">&#xe784;</i></p>
     </div>
     <h1 class="page-title">瘦身專欄</h1>
-    <div class="news-wrap" data-track-section="news.list" data-track-section-view data-track-section-label="文章列表">
+    <div class="news-wrap">
         <ul class="breadcrumb">
             <li><a href="{{ url('/') }}">首頁</a></li>
             <li class="active">瘦身專欄</li>
@@ -64,9 +59,7 @@
             @foreach($news as $item)
                 <li class="">
                     <div class="item ">
-                        @if($item->img)
-                        <div class="Img"><a href="{{ url('news/'.$item->id) }}" data-track-section="news.list" data-track-name="news.list.item" data-observer="文章-{{ $item->title }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->title }}" loading="lazy" decoding="async"></a></div>
-                        @endif
+                        <div class="Img"><a href="{{ url('news/'.$item->id) }}"><img src="{{ asset('uploads/'.$item->img) }}" alt="{{ $item->title }}"></a></div>
                         <div class="Txt">
                             <div class="newsInfoIdxBox">
                                 <div class="newsDateBox">
@@ -74,7 +67,7 @@
                                     <span class="ym">{{ substr($item->release_at->format('Y'),-2) }} {{ $item->release_at->format('M') }}</span>
                                 </div>
                                 <div class="newsTitle">
-                                    <h3><a href="{{ url('news/'.$item->id) }}" data-track-section="news.list" data-track-name="news.list.title" data-observer="文章標題-{{ $item->title }}">{{ $item->title }}</a></h3>
+                                    <h3><a href="{{ url('news/'.$item->id) }}">{{ $item->title }}</a></h3>
                                 </div>
                             </div>
                             <p class="ellipsis" style="overflow-wrap: break-word;">

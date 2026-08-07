@@ -7,6 +7,7 @@
 
 <?php $__env->startSection('script'); ?>
     <?php echo \Illuminate\View\Factory::parentPlaceholder('script'); ?>
+    <script src="<?php echo e(asset('static/a/js/jquery.easing.1.3.js')); ?>?ver=<?php echo e(config('app.asset_version')); ?>"></script>
     <script src="<?php echo e(asset('static/a/js/jquery.parallax-scroll.js')); ?>?ver=<?php echo e(config('app.asset_version')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
@@ -24,7 +25,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
-<section class="product-container" data-track-section="product_list" data-track-section-view data-track-section-label="商品列表">
+<section class="product-container">
     <div class="wrapper">
 
         <div class="product-main">
@@ -33,15 +34,12 @@
 
                 <div class="goods wow animate__animated animate__fadeInUp <?php echo e($key%2==0?"even":"odd"); ?>">
                     <div class="img-wrap" data-parallax='{"y": <?php echo e($key%2==0?"-":""); ?>100,"duration": 100}'>
-                        <img src="<?php echo e(asset('uploads/'.$goods->img)); ?>?ver=<?php echo e(config('app.asset_version')); ?>" alt="<?php echo e($goods->name); ?>" loading="lazy" decoding="async">
+                        <img  src="<?php echo e(asset('uploads/'.$goods->img)); ?>" alt="<?php echo e($goods->name); ?>">
                     </div>
                     <div class="info" data-parallax='{"y": <?php echo e($key%2==0?"":"-"); ?>100}'>
                         <div class="info-boa">
                             <p class="line"></p>
-                            <div class="title">
-                                <h2><?php echo e($goods->name); ?></h2>
-                                <p><?php echo e($goods->quantity); ?><?php echo e($goods->quantity == 1?"盒標準裝":"盒優惠套裝"); ?></p>
-                            </div>
+                            <p class="title"><?php echo e($goods->name); ?></p>
                             <div class="tags">
                                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($goods->label): ?>
                                     <p class="tags">
@@ -62,17 +60,16 @@
                                 </div>
                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                             <div class="price">
-                                <span class="now">$<?php echo e(round($goods->price)); ?></span>
+                                <span class="now">NT$ <?php echo e(number_format(round($goods->price))); ?></span>
                                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($goods->market_price-$goods->price > 0): ?>
-                                    <span class="discount deline">$<?php echo e($goods->market_price); ?></span>
+                                    <span class="discount">為你優惠NT$<?php echo e(number_format(round($goods->market_price-$goods->price))); ?></span>
                                 <?php else: ?>
-                                    <span class="discount">官方標準售價</span>
+                                    <span class="discount">藥局統一售價</span>
                                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                             </div>
 
-                            <div class="btn">
-                                <a class="checkout" data-track-section="product_list" data-track-name="product.list.checkout" href="<?php echo e(url('checkout/'.$goods->id)); ?>" data-observer="立即訂購-<?php echo e($goods->name); ?>">立即訂購</a>
-                                <a class="goinfo" data-track-section="product_list" data-track-name="product.list.detail" href="<?php echo e(url('product/'.$goods->id)); ?>" data-observer="詳情-<?php echo e($goods->name); ?>">更多詳情</a>
+                            <div class="checkout">
+                                <a class="btn-ef1" href="<?php echo e(url('checkout/'.$goods->id)); ?>">立即購買</a>
                             </div>
                         </div>
                     </div>
