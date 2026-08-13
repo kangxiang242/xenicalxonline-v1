@@ -167,7 +167,7 @@
                                 <label class="shut" for="name">收件人姓名</label>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" data-validate="required:請輸入收件人聯絡電話|mobile:聯絡電話格式錯誤" type="tel" name="phone" id="phone">
+                                <input class="form-control" data-validate="required:請輸入收件人聯絡電話|mobile:聯絡電話格式錯誤" type="tel" name="phone" id="phone" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" pattern="^09\d{8}$" title="請輸入09開頭的10位數字">
                                 <label class="shut" for="phone">收件人聯絡電話</label>
                             </div>
                             <div class="form-group">

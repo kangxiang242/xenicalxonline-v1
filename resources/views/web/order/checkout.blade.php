@@ -143,7 +143,7 @@
                                 <label class="shut" for="name">收件人姓名</label>
                             </div>
                             <div class="form-group" style="width: 360px">
-                                <input class="form-control" type="tel" name="phone" id="phone">
+                                <input class="form-control" type="tel" name="phone" id="phone" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" pattern="^09\d{8}$" title="請輸入09開頭的10位數字">
                                 <label class="shut" for="phone">收件人聯絡電話</label>
                             </div>
                             <div class="form-group" style="width: 360px">
