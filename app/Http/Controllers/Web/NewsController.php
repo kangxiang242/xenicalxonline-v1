@@ -24,7 +24,7 @@ class NewsController extends Controller
 
         $news = $this->newRepository->model()->where('status',1)->orderBy('sort','desc')->paginate(6);
 
-        return view('web.news.index')->with('news',$news);
+        return template('news.index')->with('news',$news);
     }
 
 
@@ -36,7 +36,7 @@ class NewsController extends Controller
         $news->content = app(ArticleAnchorsHandler::class)->setAnchors($news->content,Anchor::get()->toArray());
         $news->content = app(ArticleAnchorsHandler::class)->relatedArticle($news->content,$id);
 
-        return view('web.news.show',compact('news','next','prev'));
+        return template('news.show',compact('news','next','prev'));
 
     }
 }

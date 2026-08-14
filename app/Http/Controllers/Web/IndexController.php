@@ -45,7 +45,7 @@ class IndexController extends Controller
             $trade_show = json_decode($trade_show_untreated,true);
         }
 
-        return view('web.index',compact('products','faqs','for_people','trouble','trade_show'));
+        return template('index',compact('products','faqs','for_people','trouble','trade_show'));
     }
 
 

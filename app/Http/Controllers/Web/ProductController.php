@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function index(ProductRepository $productRepository){
         $products = $productRepository->all();
 
-        return view('web.product.index',compact('products'));
+        return template('product.index',compact('products'));
     }
 
 
@@ -46,6 +46,6 @@ class ProductController extends Controller
 
         }
 
-        return view('web.product.show',compact('product','guess','cate','sku_goods'));
+        return template('product.show',compact('product','guess','cate','sku_goods'));
     }
 }
